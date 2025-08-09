@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Perfumy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <style>
     .buy-btn {
@@ -82,22 +83,22 @@
     <div id="blue-de-channel" class="box">
       <img src="image1.jpg" width="100px">
       <p>BLUE DE CHANNEL Perfume 50ml</p>
-      <a class="buy-btn" href="#">Buy Now</a>
+      <button class="buy-btn">Buy Now</button>
     </div>
     <div id="dior-sauvage" class="box">
       <img src="image2.jpg" width="100px">
       <p>DIOR Sauvage Perfume 100ml</p>
-      <a class="buy-btn" href="#">Buy Now</a>
+      <button class="buy-btn">Buy Now</button>
     </div>
     <div id="gucci-bloom" class="box">
       <img src="image3.jpg" width="100px">
       <p>GUCCI Bloom Perfume 75ml</p>
-      <a class="buy-btn" href="#">Buy Now</a>
+      <button class="buy-btn">Buy Now</button>
     </div>
     <div id="chanel-chance" class="box">
       <img src="image4.jpg" width="100px">
       <p>CHANEL Chance Perfume 100ml</p>
-      <a class="buy-btn" href="#">Buy Now</a>
+      <button class="buy-btn">Buy Now</button>
     </div>
   </div>
 
@@ -105,22 +106,22 @@
     <div id="versace-eros" class="box">
       <img src="image5.jpg" width="100px">
       <p>VERSACE Eros Perfume 100ml</p>
-      <a class="buy-btn" href="#">Buy Now</a>
+      <button class="buy-btn">Buy Now</button>
     </div>
     <div id="prada-luna-rossa" class="box">
       <img src="image6.jpg" width="100px">
       <p>PRADA Luna Rossa Perfume 50ml</p>
-      <a class="buy-btn" href="#">Buy Now</a>
+      <button class="buy-btn">Buy Now</button>
     </div>
     <div id="ysl-black-opium" class="box">
       <img src="image7.jpg" width="100px">
       <p>YSL Black Opium Perfume 90ml</p>
-      <a class="buy-btn" href="#">Buy Now</a>
+      <button class="buy-btn">Buy Now</button>
     </div>
     <div id="hugo-boss-bottled" class="box">
       <img src="image8.jpg" width="100px">
       <p>HUGO BOSS Bottled Perfume 100ml</p>
-      <a class="buy-btn" href="#">Buy Now</a>
+      <button class="buy-btn">Buy Now</button>
     </div>
   </div>
 
@@ -145,28 +146,14 @@
   </div>
 
   <script>
-    const phoneNumber = "9344810862"; // Your SMS number
-
-    // Detect if mobile
-    function isMobile() {
-      return /Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
-    }
+    const phoneNumber = "9344810862"; 
 
     document.querySelectorAll(".buy-btn").forEach(button => {
-      button.addEventListener("click", function(e) {
-        e.preventDefault();
-        const productName = this.previousElementSibling.innerText.trim();
+      button.addEventListener("click", function() {
+        const productName = this.previousElementSibling.innerText;
         const message = `I want to buy ${productName}`;
-
-        if (isMobile()) {
-          // Mobile: open SMS
-          this.href = `sms:${phoneNumber}?body=${encodeURIComponent(message)}`;
-        } else {
-          // Desktop: fallback to WhatsApp
-          this.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-        }
-
-        window.location.href = this.href;
+        const smsUrl = `sms:${phoneNumber}?body=${encodeURIComponent(message)}`;
+        window.location.href = smsUrl;
       });
     });
 
@@ -196,6 +183,7 @@
         searchProduct();
       }
     });
+  
   </script>
 </body>
 </html>
