@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Perfumy</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .buy-btn {
+      display: inline-block;
+      padding: 8px 15px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 8px;
+      font-size: 14px;
+      text-decoration: none;
+    }
+    .buy-btn:hover {
+      background-color: #e60000;
+    }
+    .highlight {
+      outline: 3px solid gold;
+      background-color: #fff8dc;
+    }
+    .searchbar form {
+      display: flex;
+      justify-content: center;
+      max-width: 600px;
+      margin: auto;
+    }
+    .searchbar input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-right: none;
+      border-radius: 5px 0 0 5px;
+      outline: none;
+      flex: 1;
+    }
+    .searchbar .search-btn {
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      background: #ff4d4d;
+      color: white;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+    .searchbar .search-btn:hover {
+      background: #e60000;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: inherit;
+    }
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <nav>
+      <h1>Perfumy</h1>
+      <ul>
+        <li><a href="#home">Home</a> |</li>
+        <li><a href="#products">Products</a> |</li>
+        <li><a href="#about">About us</a> |</li>
+        <li><a href="#contact">Contact us</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="searchbar" id="home">
+    <form onsubmit="searchProduct(); return false;">
+      <input id="searchInput" placeholder="Search product...">
+      <button type="submit" class="search-btn">Search</button>
+    </form>
+  </div>
+
+  <center><h1 id="products">Products</h1></center>
+  <div class="products1">
+    <div id="blue-de-channel" class="box">
+      <img src="image1.jpg" width="100px">
+      <p>BLUE DE CHANNEL Perfume 50ml</p>
+      <a class="buy-btn" href="#">Buy Now</a>
+    </div>
+    <div id="dior-sauvage" class="box">
+      <img src="image2.jpg" width="100px">
+      <p>DIOR Sauvage Perfume 100ml</p>
+      <a class="buy-btn" href="#">Buy Now</a>
+    </div>
+    <div id="gucci-bloom" class="box">
+      <img src="image3.jpg" width="100px">
+      <p>GUCCI Bloom Perfume 75ml</p>
+      <a class="buy-btn" href="#">Buy Now</a>
+    </div>
+    <div id="chanel-chance" class="box">
+      <img src="image4.jpg" width="100px">
+      <p>CHANEL Chance Perfume 100ml</p>
+      <a class="buy-btn" href="#">Buy Now</a>
+    </div>
+  </div>
+
+  <div class="products2">
+    <div id="versace-eros" class="box">
+      <img src="image5.jpg" width="100px">
+      <p>VERSACE Eros Perfume 100ml</p>
+      <a class="buy-btn" href="#">Buy Now</a>
+    </div>
+    <div id="prada-luna-rossa" class="box">
+      <img src="image6.jpg" width="100px">
+      <p>PRADA Luna Rossa Perfume 50ml</p>
+      <a class="buy-btn" href="#">Buy Now</a>
+    </div>
+    <div id="ysl-black-opium" class="box">
+      <img src="image7.jpg" width="100px">
+      <p>YSL Black Opium Perfume 90ml</p>
+      <a class="buy-btn" href="#">Buy Now</a>
+    </div>
+    <div id="hugo-boss-bottled" class="box">
+      <img src="image8.jpg" width="100px">
+      <p>HUGO BOSS Bottled Perfume 100ml</p>
+      <a class="buy-btn" href="#">Buy Now</a>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="about" id="about">
+    <h1>About us</h1>
+    <p>Welcome to Perfumy, your trusted destination for the finest perfumes at unbeatable prices.
+    We bring together a wide collection of authentic fragrances — from luxury brands to everyday favorites — so you can find the perfect scent for any occasion.</p>
+    <p>Our goal is simple: make it easy and affordable for everyone to enjoy high-quality perfumes.
+    Whether you’re shopping for yourself or looking for the perfect gift, we ensure a smooth shopping experience and fast delivery right to your doorstep.</p>
+    <p><i>"Smell amazing. Spend less."</i></p>
+  </div>
+
+  <div class="contact" id="contact">
+    <h1 style="text-align:center">Contact</h1>
+    <h3>Email: mohnapranav@gmail.com</h3>
+    <h3>Phone/SMS: 9344810862</h3>
+    <h3>Address: Erode, Tamil Nadu</h3>
+    <p style="margin-top:30px;font-size:15px;">We’d love to hear from you! Whether you have questions about our products, need help with your order, or just want fragrance recommendations, our team is here to assist you. Or simply fill out our contact form and we’ll get back to you within 24 hours.</p>
+    <p style="margin-top:20px"><i>"Your satisfaction is our priority."</i></p>
+  </div>
+
+  <script>
+    const phoneNumber = "9344810862"; // Your SMS number
+
+    // Detect if mobile
+    function isMobile() {
+      return /Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+    }
+
+    document.querySelectorAll(".buy-btn").forEach(button => {
+      button.addEventListener("click", function(e) {
+        e.preventDefault();
+        const productName = this.previousElementSibling.innerText.trim();
+        const message = `I want to buy ${productName}`;
+
+        if (isMobile()) {
+          // Mobile: open SMS
+          this.href = `sms:${phoneNumber}?body=${encodeURIComponent(message)}`;
+        } else {
+          // Desktop: fallback to WhatsApp
+          this.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        }
+
+        window.location.href = this.href;
+      });
+    });
+
+    function searchProduct() {
+      const query = document.getElementById("searchInput").value.trim().toLowerCase();
+      const products = document.querySelectorAll(".box");
+      let found = false;
+
+      products.forEach(product => {
+        product.classList.remove("highlight");
+        const productName = product.querySelector("p").innerText.toLowerCase();
+        if (productName.includes(query) && query !== "") {
+          product.scrollIntoView({ behavior: "smooth", block: "center" });
+          product.classList.add("highlight");
+          found = true;
+        }
+      });
+
+      if (!found && query !== "") {
+        const searchUrl = "https://bellavitaluxury.co.in/collections/all-products?q=" + encodeURIComponent(query);
+        window.location.href = searchUrl;
+      }
+    }
+
+    document.getElementById("searchInput").addEventListener("keyup", function(e) {
+      if (e.key === "Enter") {
+        searchProduct();
+      }
+    });
+  </script>
+</body>
+</html>
